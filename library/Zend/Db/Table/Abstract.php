@@ -1418,8 +1418,8 @@ abstract class Zend_Db_Table_Abstract
      * @param string|array|Zend_Db_Table_Select $where  OPTIONAL An SQL WHERE clause or Zend_Db_Table_Select object.
      * @param string|array                      $order  OPTIONAL An SQL ORDER clause.
      * @param int                               $offset OPTIONAL An SQL OFFSET value.
-     * @return Zend_Db_Table_Row_Abstract|null The row results per the
-     *     Zend_Db_Adapter fetch mode, or null if no row found.
+     * @return Zend_Db_Table_Row_Abstract|array The row results per the
+     *     Zend_Db_Adapter fetch mode, or empty array if no row found.
      */
     public function fetchRow($where = null, $order = null, $offset = null)
     {
@@ -1443,7 +1443,7 @@ abstract class Zend_Db_Table_Abstract
         $rows = $this->_fetch($select);
 
         if (count($rows) == 0) {
-            return null;
+            return [];
         }
 
         $data = array(
